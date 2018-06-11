@@ -1,5 +1,5 @@
-#ifndef CS_TAU_CPP_EX_2_MYBOARD_H
-#define CS_TAU_CPP_EX_2_MYBOARD_H
+#ifndef CS_TAU_CPP_EX_3_MYBOARD_H
+#define CS_TAU_CPP_EX_3_MYBOARD_H
 
 
 #include <memory>
@@ -29,4 +29,4 @@ private:
 };
 
 
-#endif //CS_TAU_CPP_EX_2_MYBOARD_H
+#endif //CS_TAU_CPP_EX_3_MYBOARD_H

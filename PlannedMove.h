@@ -1,5 +1,5 @@
-#ifndef CS_TAU_CPP_EX_2_PLANNEDMOVER_H
-#define CS_TAU_CPP_EX_2_PLANNEDMOVER_H
+#ifndef CS_TAU_CPP_EX_3_PLANNEDMOVER_H
+#define CS_TAU_CPP_EX_3_PLANNEDMOVER_H
 
 #include "GamePiece.h"
 #include "Point.h"
@@ -53,4 +53,4 @@ public:
 
 
 
-#endif //CS_TAU_CPP_EX_2_PLANNEDMOVER_H
+#endif //CS_TAU_CPP_EX_3_PLANNEDMOVER_H

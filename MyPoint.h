@@ -1,5 +1,5 @@
-#ifndef CS_TAU_CPP_EX_2_MYPOINT_H
-#define CS_TAU_CPP_EX_2_MYPOINT_H
+#ifndef CS_TAU_CPP_EX_3_MYPOINT_H
+#define CS_TAU_CPP_EX_3_MYPOINT_H
 
 
 #include "Point.h"
@@ -28,4 +28,4 @@ public:
 };
 
 
-#endif //CS_TAU_CPP_EX_2_MYPOINT_H
+#endif //CS_TAU_CPP_EX_3_MYPOINT_H

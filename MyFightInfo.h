@@ -1,5 +1,5 @@
-#ifndef CS_TAU_CPP_EX_2_MYFIGHTINFO_H
-#define CS_TAU_CPP_EX_2_MYFIGHTINFO_H
+#ifndef CS_TAU_CPP_EX_3_MYFIGHTINFO_H
+#define CS_TAU_CPP_EX_3_MYFIGHTINFO_H
 
 
 #include "FightInfo.h"
@@ -41,4 +41,4 @@ private:
 };
 
 
-#endif //CS_TAU_CPP_EX_2_MYFIGHTINFO_H
+#endif //CS_TAU_CPP_EX_3_MYFIGHTINFO_H
