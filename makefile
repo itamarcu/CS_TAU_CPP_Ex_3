@@ -29,6 +29,7 @@ RPSPlayer_208940601.o: RPSPlayer_208940601.cpp RPSPlayer_208940601.h PlayerAlgor
 	MyBoard.h Auxiliary.h MyPiecePosition.h MyJokerChange.h MyMove.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 Auxiliary.o: Auxiliary.cpp Auxiliary.h
+
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 BoardIO.o: BoardIO.cpp BoardIO.h Auxiliary.h GameLogic.h Game.h MyBoard.h Board.h GamePiece.h \
 	FightInfo.h PlannedMove.h Point.h MyPoint.h
@@ -65,7 +66,15 @@ MyPiecePosition.o: MyPiecePosition.cpp MyPiecePosition.h PiecePosition.h MyPoint
 MyPoint.o: MyPoint.cpp MyPoint.h Point.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 PlannedMove.o: PlannedMove.cpp PlannedMove.h GamePiece.h Point.h MyPoint.h
-		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
+	    $(COMP) $(CPP_COMP_FLAG) -c $*.cpp
+RSPPlayer_208940601.so: RSPPlayer_208940601.o AlgorithmRegistration.h
+        $(COMP) RSPPlayer_208940601.o -shared -o $@
+.PHONY: all
+all: $(EXEC) RSPPlayer_308550441.so
+.PHONY: rps_tournament
+rps_tournament: $(EXEC)
+.PHONY: rps_lib
+rps_lib: RSPPlayer_308550441.so
 clean:
 	rm -f $(OBJS) $(EXEC)
 
