@@ -70,11 +70,11 @@ PlannedMove.o: PlannedMove.cpp PlannedMove.h GamePiece.h Point.h MyPoint.h
 RSPPlayer_208940601.so: RSPPlayer_208940601.o AlgorithmRegistration.h
         $(COMP) RSPPlayer_208940601.o -shared -o $@
 .PHONY: all
-all: $(EXEC) RSPPlayer_308550441.so
+all: $(EXEC) RSPPlayer_208940601.so
 .PHONY: rps_tournament
 rps_tournament: $(EXEC)
 .PHONY: rps_lib
-rps_lib: RSPPlayer_308550441.so
+rps_lib: RSPPlayer_208940601.so
 clean:
 	rm -f $(OBJS) $(EXEC)
 
