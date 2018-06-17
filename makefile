@@ -1,5 +1,5 @@
 COMP = g++-5.3.0
-OBJS = AutoPlayerAlgorithm.o \
+OBJS = RPSPlayer_208940601.o \
 	Auxiliary.o \
 	BoardIO.o \
 	FilePlayerAlgorithm.o \
@@ -7,7 +7,7 @@ OBJS = AutoPlayerAlgorithm.o \
 	GameLogic.o \
 	GameManager.o \
 	GamePiece.o \
-	main.o \
+	main_TournamentManager.o \
 	MyBoard.o \
 	MyFightInfo.o \
 	MyJokerChange.o \
@@ -16,14 +16,15 @@ OBJS = AutoPlayerAlgorithm.o \
 	MyPoint.o \
 	PlannedMove.o \
 
-EXEC = ex2
+EXEC = ex3
 CPP_COMP_FLAG = -std=c++14 -Wall -Wextra \
--Werror -pedantic-errors -DNDEBUG
+-Werror -pedantic-errors -DNDEBUG \
+-shared -fPIC -rdynamic -ldl -pthread -lpthread
 
 $(EXEC): $(OBJS)
 	$(COMP) $(OBJS) -o $@
 
-AutoPlayerAlgorithm.o: AutoPlayerAlgorithm.cpp AutoPlayerAlgorithm.h PlayerAlgorithm.h Point.h \
+RPSPlayer_208940601.o: RPSPlayer_208940601.cpp RPSPlayer_208940601.h PlayerAlgorithm.h Point.h \
 	PiecePosition.h Board.h FightInfo.h Move.h JokerChange.h PlannedMove.h GamePiece.h MyPoint.h \
 	MyBoard.h Auxiliary.h MyPiecePosition.h MyJokerChange.h MyMove.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
@@ -47,9 +48,9 @@ GameManager.o: GameManager.cpp GameManager.h Game.h MyBoard.h Board.h GamePiece.
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 GamePiece.o: GamePiece.cpp GamePiece.h Auxiliary.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
-main.o: main.cpp Auxiliary.h BoardIO.h GameLogic.h Game.h MyBoard.h Board.h GamePiece.h FightInfo.h \
+main_TournamentManager.o: main_TournamentManager.cpp Auxiliary.h BoardIO.h GameLogic.h Game.h MyBoard.h Board.h GamePiece.h FightInfo.h \
 	PlannedMove.h Point.h MyPoint.h GameManager.h PlayerAlgorithm.h PiecePosition.h Move.h \
-	JokerChange.h FilePlayerAlgorithm.h AutoPlayerAlgorithm.h
+	JokerChange.h FilePlayerAlgorithm.h RPSPlayer_208940601.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 MyBoard.o: MyBoard.cpp MyBoard.h Board.h GamePiece.h Auxiliary.h Point.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
@@ -67,3 +68,8 @@ PlannedMove.o: PlannedMove.cpp PlannedMove.h GamePiece.h Point.h MyPoint.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 clean:
 	rm -f $(OBJS) $(EXEC)
+
+
+RSPPlayer_208940601.so: RSPPlayer_208940601.o AlgorithmRegistration.h
+		#(COMP) $(CPP_COMP_FLAG) RSPPlayer_208940601.o Parser.o GameBoard.o Cell.o SoldierFactory.o Constants.o -shared -fPIC -rdynamic -o RSPPlayer_X.so
+

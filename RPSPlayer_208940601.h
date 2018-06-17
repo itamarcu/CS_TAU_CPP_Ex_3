@@ -6,7 +6,7 @@
 #include "PlannedMove.h"
 #include "MyBoard.h"
 
-class AutoPlayerAlgorithm : public PlayerAlgorithm {
+class RPSPlayer_208940601 : public PlayerAlgorithm {
 private:
     unsigned int player; // 1 or 2
     unsigned int enemyPieceWhichJustAttacked;
@@ -91,7 +91,7 @@ private:
 
 public:
 
-    explicit AutoPlayerAlgorithm(int player);
+    explicit RPSPlayer_208940601(int player);
 
     void getInitialPositions(int player, std::vector<unique_ptr<PiecePosition>> &vectorToFill) override;
 
@@ -126,7 +126,7 @@ public:
      */
     unique_ptr<JokerChange> getJokerChange() override;
 
-    ~AutoPlayerAlgorithm() override;
+    ~RPSPlayer_208940601() override;
 
 };
 
