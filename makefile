@@ -1,5 +1,5 @@
 COMP = g++-5.3.0
-OBJS = RPSPlayer_208940601.o \
+OBJS = RSPPlayer_208940601.o \
 	Auxiliary.o \
 	BoardIO.o \
 	FilePlayerAlgorithm.o \
@@ -24,7 +24,7 @@ CPP_COMP_FLAG = -std=c++14 -Wall -Wextra \
 $(EXEC): $(OBJS)
 	$(COMP) $(OBJS) -o $@
 
-RPSPlayer_208940601.o: RPSPlayer_208940601.cpp RPSPlayer_208940601.h PlayerAlgorithm.h Point.h \
+RSPPlayer_208940601.o: RPSPlayer_208940601.cpp RPSPlayer_208940601.h PlayerAlgorithm.h Point.h \
 	PiecePosition.h Board.h FightInfo.h Move.h JokerChange.h PlannedMove.h GamePiece.h MyPoint.h \
 	MyBoard.h Auxiliary.h MyPiecePosition.h MyJokerChange.h MyMove.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
@@ -67,8 +67,10 @@ MyPoint.o: MyPoint.cpp MyPoint.h Point.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 PlannedMove.o: PlannedMove.cpp PlannedMove.h GamePiece.h Point.h MyPoint.h
 	    $(COMP) $(CPP_COMP_FLAG) -c $*.cpp
+
 RSPPlayer_208940601.so: RSPPlayer_208940601.o AlgorithmRegistration.h
-        $(COMP) RSPPlayer_208940601.o -shared -o $@
+	$(COMP) RSPPlayer_208940601.o -shared -o $@
+    
 .PHONY: all
 all: $(EXEC) RSPPlayer_208940601.so
 .PHONY: rps_tournament
