@@ -1,5 +1,5 @@
 #include <iostream>
-#include "RPSPlayer_208940601.h"
+#include "RSPPlayer_208940601.h"
 #include "MyPiecePosition.h"
 #include "MyJokerChange.h"
 #include "MyMove.h"
@@ -7,7 +7,7 @@
 #define SIZE_OF_BIASED_JOKER_ARRAY 6
 #define BIASED_JOKER_ARRAY {SCISSORS_CHAR, ROCK_CHAR, PAPER_CHAR, ROCK_CHAR, SCISSORS_CHAR, ROCK_CHAR}
 
-void RPSPlayer_208940601::notifyOnInitialBoard(const Board &b, const std::vector<std::unique_ptr<FightInfo>> &fights) {
+void RSPPlayer_208940601::notifyOnInitialBoard(const Board &b, const std::vector<std::unique_ptr<FightInfo>> &fights) {
     (void) fights; // avoid compiler warning about unused parameter v__v
     for (int i = 0; i < N; ++i) {
         for (int j = 0; j < M; ++j) {
@@ -21,7 +21,7 @@ void RPSPlayer_208940601::notifyOnInitialBoard(const Board &b, const std::vector
     }
 }
 
-void RPSPlayer_208940601::notifyOnOpponentMove(const Move &move) {
+void RSPPlayer_208940601::notifyOnOpponentMove(const Move &move) {
     int from_x = move.getFrom().getX() - 0; // TODO 1-indexing
     int from_y = move.getFrom().getY() - 0;
     int to_x = move.getTo().getX() - 0;
@@ -36,7 +36,7 @@ void RPSPlayer_208940601::notifyOnOpponentMove(const Move &move) {
     ourPieceWhichJustAttacked = 0;
 }
 
-void RPSPlayer_208940601::notifyFightResult(const FightInfo &fightInfo) {
+void RSPPlayer_208940601::notifyFightResult(const FightInfo &fightInfo) {
     int fight_x = fightInfo.getPosition().getX() - 0; // TODO 1-indexing
     int fight_y = fightInfo.getPosition().getY() - 0;
     auto winner = (unsigned int) fightInfo.getWinner();
@@ -66,7 +66,7 @@ void RPSPlayer_208940601::notifyFightResult(const FightInfo &fightInfo) {
     enemyPieceWhichJustAttacked = 0;
 }
 
-unique_ptr<Move> RPSPlayer_208940601::getMove() {
+unique_ptr<Move> RSPPlayer_208940601::getMove() {
     enemyPieceWhichJustAttacked = 0;
     std::unique_ptr<std::vector<MyPoint>> couldBeEnemyFlagPointsVector = get_by_filter(EnemyPlayer, CanMove);
     std::unique_ptr<std::vector<MyPoint>> myScissors = get_by_filter(Scissors | OurPlayer);
@@ -149,14 +149,14 @@ unique_ptr<Move> RPSPlayer_208940601::getMove() {
 
 }
 
-unique_ptr<Move> RPSPlayer_208940601::make_move(const MyPoint &from,
+unique_ptr<Move> RSPPlayer_208940601::make_move(const MyPoint &from,
                                                 const MyPoint &to) {
     this->ourPieceWhichJustAttacked = this->myBoard[from.getX()][from.getY()];
     this->myBoard[from.getX()][from.getY()] = NoPlayer;
     return std::make_unique<MyMove>(from, to);
 }
 
-unique_ptr<JokerChange> RPSPlayer_208940601::getJokerChange() {
+unique_ptr<JokerChange> RSPPlayer_208940601::getJokerChange() {
     int random = random_number_in_range_inclusive(1, 10);
     std::unique_ptr<std::vector<MyPoint>> jokerPositions = get_by_filter(Joker & OurPlayer);
     //in 70% probability
@@ -172,7 +172,7 @@ unique_ptr<JokerChange> RPSPlayer_208940601::getJokerChange() {
 }
 
 unique_ptr<JokerChange>
-RPSPlayer_208940601::select_joker_change(const unique_ptr<std::vector<MyPoint>> &jokerPositions, int pos) {
+RSPPlayer_208940601::select_joker_change(const unique_ptr<std::vector<MyPoint>> &jokerPositions, int pos) {
     char c;
     MyPoint &jokerPoint = (*jokerPositions)[pos];
     c = this->select_new_joker_repr(jokerPoint);
@@ -181,7 +181,7 @@ RPSPlayer_208940601::select_joker_change(const unique_ptr<std::vector<MyPoint>> 
     return std::move(change);
 }
 
-char RPSPlayer_208940601::select_new_joker_repr(const MyPoint &jokerPoint) {
+char RSPPlayer_208940601::select_new_joker_repr(const MyPoint &jokerPoint) {
     char c = PAPER_CHAR;// default
     if (myBoard[jokerPoint.getX()][jokerPoint.getY()] && Scissors) {
         myBoard[jokerPoint.getX()][jokerPoint.getY()] &= ~Scissors;
@@ -201,12 +201,12 @@ char RPSPlayer_208940601::select_new_joker_repr(const MyPoint &jokerPoint) {
     return c;
 }
 
-RPSPlayer_208940601::RPSPlayer_208940601(int player) : player((unsigned int) player),
+RSPPlayer_208940601::RSPPlayer_208940601(int player) : player((unsigned int) player),
                                                        enemyPieceWhichJustAttacked(NoPlayer) {}
 
-RPSPlayer_208940601::~RPSPlayer_208940601() = default;
+RSPPlayer_208940601::~RSPPlayer_208940601() = default;
 
-unsigned int RPSPlayer_208940601::encode_type_from_char(char c) const {
+unsigned int RSPPlayer_208940601::encode_type_from_char(char c) const {
     switch (toupper(c)) {
         case BOMB_CHAR:
             return Bomb;
@@ -229,7 +229,7 @@ unsigned int RPSPlayer_208940601::encode_type_from_char(char c) const {
 }
 
 unique_ptr<std::vector<MyPoint>>
-RPSPlayer_208940601::get_by_filter(unsigned int filter_in, unsigned int filter_out) const {
+RSPPlayer_208940601::get_by_filter(unsigned int filter_in, unsigned int filter_out) const {
     std::unique_ptr<std::vector<MyPoint>> vector = std::make_unique<std::vector<MyPoint>>();
     for (int i = 0; i < N; ++i) {
         for (int j = 0; j < M; ++j) {
@@ -243,7 +243,7 @@ RPSPlayer_208940601::get_by_filter(unsigned int filter_in, unsigned int filter_o
     return vector;
 }
 
-void RPSPlayer_208940601::getInitialPositions(int player, std::vector<unique_ptr<PiecePosition>> &vectorToFill) {
+void RSPPlayer_208940601::getInitialPositions(int player, std::vector<unique_ptr<PiecePosition>> &vectorToFill) {
     (void) player; // avoid compiler warning about unused parameter v__v
     std::vector<MyPoint> availableSpots;
     for (int i = 0; i < N; ++i) {
@@ -273,7 +273,7 @@ void RPSPlayer_208940601::getInitialPositions(int player, std::vector<unique_ptr
 
 }
 
-void RPSPlayer_208940601::select_non_joker_piece_to_add(std::vector<unique_ptr<PiecePosition>> &vectorToFill,
+void RSPPlayer_208940601::select_non_joker_piece_to_add(std::vector<unique_ptr<PiecePosition>> &vectorToFill,
                                                         std::vector<MyPoint> &availableSpots, int count, char chr,
                                                         bool movable) {
     for (int i = 0; i < count; i++) {

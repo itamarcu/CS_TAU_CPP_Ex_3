@@ -4,7 +4,7 @@
 #include "BoardIO.h"
 #include "GameManager.h"
 #include "FilePlayerAlgorithm.h"
-#include "RPSPlayer_208940601.h"
+#include "RSPPlayer_208940601.h"
 
 using std::cout;
 using std::endl;
@@ -32,12 +32,12 @@ int main(int argc, char *argv[]) {
     if (argument.substr(0, 4) == "file") {
         p1_algo = std::make_unique<FilePlayerAlgorithm>(1);
     } else {
-        p1_algo = std::make_unique<RPSPlayer_208940601>(1);
+        p1_algo = std::make_unique<RSPPlayer_208940601>(1);
     }
     if (argument.substr(8, 4) == "file") {
         p2_algo = std::make_unique<FilePlayerAlgorithm>(2);
     } else {
-        p2_algo = std::make_unique<RPSPlayer_208940601>(2);
+        p2_algo = std::make_unique<RSPPlayer_208940601>(2);
     }
 
     Game game = Game();

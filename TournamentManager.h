@@ -1,5 +1,8 @@
-#include <map>
 #include <iostream>
+#include <map>
+#include <set>
+#include <algorithm>
+#include <functional>
 #include "PlayerAlgorithm.h"
 
 #ifndef CS_TAU_CPP_RPS_TOURNAMENTMANAGER_H
@@ -7,8 +10,11 @@
 
 
 class TournamentManager {
+private:
     static TournamentManager theTournamentManager;
-    std::map<std::string, std::function<std::unique_ptr<PlayerAlgorithm>()>> id2factory;
+    std::set<std::string> IDs;
+    std::map<std::string, std::function<std::unique_ptr<PlayerAlgorithm>()>> algorithm_factories_by_ID;
+    std::map<std::string, int> scoresByID;
 
     // private ctor
     TournamentManager() = default;
@@ -20,17 +26,10 @@ public:
 
     void registerAlgorithm(std::string id, std::function<std::unique_ptr<PlayerAlgorithm>()> factoryMethod) {
         // TODO: should warn if id is already registered
-        id2factory[id] = factoryMethod;
+        algorithm_factories_by_ID[id] = factoryMethod;
     }
 
-    void run() const {
-        for (auto &pair : id2factory) {
-            const auto &id = pair.first;
-            std::cout << id << ": ";
-            const auto &factoryMethod = pair.second;
-//            factoryMethod()->foo(); // TODO ???
-        }
-    }
+    void run() const;
 };
 
 
