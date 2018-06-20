@@ -14,8 +14,21 @@ bool ends_with(std::string const &value, std::string const &ending) {
 }
 
 void TournamentManager::battle_between(std::string p1_ID, std::string p2_ID) {
-    std::unique_ptr<PlayerAlgorithm> p1_algo = algorithm_factories_by_ID[p1_ID]();
-    std::unique_ptr<PlayerAlgorithm> p2_algo = algorithm_factories_by_ID[p2_ID]();
+    auto factory1 = algorithm_factories_by_ID[p1_ID];
+    auto factory2 = algorithm_factories_by_ID[p2_ID];
+    if (factory1 == nullptr) {
+        std::cerr << "Algorithm " << p1_ID << " was not registered :(   one day we will fix this problem hopefully"
+                  << std::endl;
+    }
+    if (factory2 == nullptr) {
+        std::cerr << "Algorithm " << p2_ID << " was not registered :(   one day we will fix this problem hopefully"
+                  << std::endl;
+    }
+    if (factory1 == nullptr || factory2 == nullptr) {
+        exit(1);
+    }
+    std::unique_ptr<PlayerAlgorithm> p1_algo = factory1();
+    std::unique_ptr<PlayerAlgorithm> p2_algo = factory2();
     Game game = Game();
     NewGameManager gm = NewGameManager(game, std::move(p1_algo), std::move(p2_algo));
     gm.run_game();
@@ -68,8 +81,16 @@ void TournamentManager::run(const char *path, int num_threads) {
         exit(1);
     }
 
+    int id_count = (int) IDs.size();
+
     if (DEBUGGING_MODE) {
-        printf("Total number of algorithms loaded: %d\n", (int) IDs.size());
+        printf("Total number of algorithms loaded: %d\n", id_count);
+    }
+
+    if (id_count < 2) {
+        std::cerr << "ERROR: less than 2 algorithms have registered. Cannot run a tournament. Shutting down."
+                  << std::endl;
+        return;
     }
 
     /*
@@ -80,6 +101,21 @@ void TournamentManager::run(const char *path, int num_threads) {
     }
 
     //TODO here: run all the battle threads
+    // Each algorithm will play with the 15 algorithms in front of it and behind it, rotating around the list in modulo
+    for (int id_index_1 = 0; id_index_1 < id_count; id_index_1++) {
+        int id_index_2 = id_index_1;
+        for (int game_count = 0; game_count < 15; game_count++) {
+            id_index_2++;
+            if (id_index_2 == id_index_1)
+                id_index_2++;
+            if (id_index_2 > id_count)
+                id_index_2 %= id_count;
+            printf("%d  %d %d\n", game_count, id_index_1, id_index_2);
+            auto id_1 = *std::next(IDs.begin(), id_index_1);
+            auto id_2 = *std::next(IDs.begin(), id_index_2);
+            battle_between(id_1, id_2);
+        }
+    }
 
     //TODO here: wait for them all to finish
 
