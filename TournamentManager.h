@@ -34,6 +34,8 @@ public:
     }
 
     void run(const char *path, int num_threads);
+
+    void battle_between(std::string p1_ID, std::string p2_ID);
 };
 
 

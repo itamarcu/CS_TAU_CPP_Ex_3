@@ -1,5 +1,7 @@
 #include "TournamentManager.h"
 #include "Auxiliary.h"
+#include "Game.h"
+#include "GameManager.h"
 #include <dlfcn.h>
 #include <dirent.h>
 
@@ -9,6 +11,30 @@ TournamentManager TournamentManager::theTournamentManager;
 bool ends_with(std::string const &value, std::string const &ending) {
     if (ending.size() > value.size()) return false;
     return std::equal(ending.rbegin(), ending.rend(), value.rbegin());
+}
+
+void TournamentManager::battle_between(std::string p1_ID, std::string p2_ID) {
+    std::unique_ptr<PlayerAlgorithm> p1_algo = algorithm_factories_by_ID[p1_ID]();
+    std::unique_ptr<PlayerAlgorithm> p2_algo = algorithm_factories_by_ID[p2_ID]();
+    Game game = Game();
+    NewGameManager gm = NewGameManager(game, std::move(p1_algo), std::move(p2_algo));
+    gm.run_game();
+
+    switch (game.getGameWinner()) {
+        case PLAYER_1_VICTORY:
+            scores_by_ID[p1_ID] += 3;
+            break;
+        case PLAYER_2_VICTORY:
+            scores_by_ID[p2_ID] += 3;
+            break;
+        case TIE:
+            scores_by_ID[p1_ID] += 1;
+            scores_by_ID[p1_ID] += 1;
+            break;
+        case GAME_NOT_ENDED:
+            std::cerr << "ERROR: game hasn't ended but it did" << std::endl;
+            break;
+    }
 }
 
 void TournamentManager::run(const char *path, int num_threads) {
