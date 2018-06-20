@@ -9,7 +9,7 @@
 #define BIASED_JOKER_ARRAY {SCISSORS_CHAR, ROCK_CHAR, PAPER_CHAR, ROCK_CHAR, SCISSORS_CHAR, ROCK_CHAR}
 
 
-
+REGISTER_ALGORITHM(208940601)
 void RSPPlayer_208940601::notifyOnInitialBoard(const Board &b, const std::vector<std::unique_ptr<FightInfo>> &fights) {
     (void) fights; // avoid compiler warning about unused parameter v__v
     for (int i = 0; i < N; ++i) {
