@@ -7,7 +7,7 @@
 #include "MyBoard.h"
 #include "AlgorithmRegistration.h"
 
-REGISTER_ALGORITHM(208940601);
+
 class RSPPlayer_208940601 : public PlayerAlgorithm {
 
 private:

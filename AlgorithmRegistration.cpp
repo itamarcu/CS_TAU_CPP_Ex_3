@@ -3,5 +3,7 @@
 
 AlgorithmRegistration::AlgorithmRegistration(std::string id,
                                              std::function<std::unique_ptr<PlayerAlgorithm>()> factory) {
+    std::out::
     TournamentManager::getTournamentManager().registerAlgorithm(id, std::move(factory));
+
 }
