@@ -30,7 +30,8 @@ int main(int argc, char *argv[]) {
     if (argc >= 5 && std::string(argv[3]) == "-threads")
         num_threads = atoi(argv[4]);
 
-    DEBUGGING_MODE = std::find(argv, argv + argc, "DEBUG") != argv + argc;
+//    DEBUGGING_MODE = std::find(argv, argv + argc, "DEBUG") != argv + argc;
+    DEBUGGING_MODE = true;
     if (DEBUGGING_MODE)
         cout << "DEBUGGING_MODE: ON" << endl;
 
