@@ -5,8 +5,11 @@
 #include "PlayerAlgorithm.h"
 #include "PlannedMove.h"
 #include "MyBoard.h"
+#include "AlgorithmRegistration.h"
 
+REGISTER_ALGORITHM(208940601);
 class RSPPlayer_208940601 : public PlayerAlgorithm {
+
 private:
     unsigned int player; // 1 or 2
     unsigned int enemyPieceWhichJustAttacked;

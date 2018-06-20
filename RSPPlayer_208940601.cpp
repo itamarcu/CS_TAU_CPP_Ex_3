@@ -8,7 +8,7 @@
 #define SIZE_OF_BIASED_JOKER_ARRAY 6
 #define BIASED_JOKER_ARRAY {SCISSORS_CHAR, ROCK_CHAR, PAPER_CHAR, ROCK_CHAR, SCISSORS_CHAR, ROCK_CHAR}
 
-REGISTER_ALGORITHM(208940601)
+
 
 void RSPPlayer_208940601::notifyOnInitialBoard(const Board &b, const std::vector<std::unique_ptr<FightInfo>> &fights) {
     (void) fights; // avoid compiler warning about unused parameter v__v
@@ -186,15 +186,15 @@ RSPPlayer_208940601::select_joker_change(const unique_ptr<std::vector<MyPoint>> 
 
 char RSPPlayer_208940601::select_new_joker_repr(const MyPoint &jokerPoint) {
     char c = PAPER_CHAR;// default
-    if (myBoard[jokerPoint.getX()][jokerPoint.getY()] && Scissors) {
+    if (myBoard[jokerPoint.getX()][jokerPoint.getY()] & Scissors) {
         myBoard[jokerPoint.getX()][jokerPoint.getY()] &= ~Scissors;
         myBoard[jokerPoint.getX()][jokerPoint.getY()] |= Paper;
         c = PAPER_CHAR;
-    } else if (myBoard[jokerPoint.getX()][jokerPoint.getY()] && Rock) {
+    } else if (myBoard[jokerPoint.getX()][jokerPoint.getY()] & Rock) {
         myBoard[jokerPoint.getX()][jokerPoint.getY()] &= ~Rock;
         myBoard[jokerPoint.getX()][jokerPoint.getY()] |= Scissors;
         c = SCISSORS_CHAR;
-    } else if (myBoard[jokerPoint.getX()][jokerPoint.getY()] && Paper) {
+    } else if (myBoard[jokerPoint.getX()][jokerPoint.getY()] & Paper) {
         myBoard[jokerPoint.getX()][jokerPoint.getY()] &= ~Paper;
         myBoard[jokerPoint.getX()][jokerPoint.getY()] |= Rock;
         c = ROCK_CHAR;
