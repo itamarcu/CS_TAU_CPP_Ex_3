@@ -71,7 +71,7 @@ AlgorithmRegistration.o: AlgorithmRegistration.cpp AlgorithmRegistration.h Playe
 
 
 RSPPlayer_208940601.so: RSPPlayer_208940601.cpp
-		$(COMP) $(CPP_COMP_FLAG) RSPPlayer_208940601.cpp -o RSPPlayer_208940601.so -ldl -shared
+		$(COMP) $(CPP_COMP_FLAG) RSPPlayer_208940601.cpp -o RSPPlayer_208940601.so -ldl -shared -rdynamic
 
 
 .PHONY: all
