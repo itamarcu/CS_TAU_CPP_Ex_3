@@ -3,12 +3,16 @@
 
 #include <functional>
 #include <memory>
+#include <string>
+#include <iostream>
 
 #include "PlayerAlgorithm.h"
 
 class AlgorithmRegistration {
 public:
-    AlgorithmRegistration(std::string id, std::function<std::unique_ptr<PlayerAlgorithm>()> factory);
+    AlgorithmRegistration(std::string id, std::function<std::unique_ptr<PlayerAlgorithm>()> factory) {
+        std::cout << "ok " << std::endl;
+    }
 };
 
 #define REGISTER_ALGORITHM(ID) \
