@@ -24,7 +24,7 @@ CPP_COMP_FLAG =  -std=c++14 -Wall -Wextra \
 
 $(EXEC): $(OBJS)
 	$(COMP) $(OBJS) -rdynamic -ldl -pthread -o $@
-RSPPlayer_208940601.so: RSPPlayer_308550441.o
+RSPPlayer_208940601.so: RSPPlayer_208940601.o
 	$(COMP) RSPPlayer_208940601.o -shared -o $@
 Auxiliary.o: Auxiliary.cpp Auxiliary.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
