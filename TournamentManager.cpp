@@ -61,11 +61,12 @@ void TournamentManager::run(const char *path, int num_threads) {
         /* print all the files and directories within directory */
         while ((ent = readdir(dir)) != nullptr) {
             const char *file_name = (char *) (ent->d_name);
-            auto file_path = (path + std::string("/") + file_name).c_str();
+            std::string file_path(path);
+            file_path += std::string("/") + std::string(file_name);
             if (ends_with(file_name, ".so")) {
                 //load SO file
                 std::cout << "Loaded:    " << file_name << std::endl;
-                void *dlh = dlopen(file_path, RTLD_LAZY);
+                void *dlh = dlopen(file_path.c_str(), RTLD_LAZY);
                 if (dlh == nullptr) {
                     fprintf(stderr, "%s\n", dlerror());
                     exit(1);
