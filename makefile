@@ -19,13 +19,13 @@ OBJS = Auxiliary.o \
 # RSPPlayer_208940601.o \
 
 EXEC = ex3
-CPP_COMP_FLAG = -std=c++14 -Wall -Wextra \
--Werror -pedantic-errors -DNDEBUG -O2 \
--shared -fPIC -rdynamic -pthread -lpthread -ldl -Wl,-rpath-link=.
+CPP_COMP_FLAG =  -std=c++14 -Wall -Wextra \
+-Werror -pedantic-errors -DNDEBUG
 
 $(EXEC): $(OBJS)
-	$(COMP) $(OBJS) -o $@ -ldl -rdynamic
-
+	$(COMP) $(OBJS) -rdynamic -ldl -pthread -o $@
+RSPPlayer_208940601.so: RSPPlayer_308550441.o
+	$(COMP) RSPPlayer_208940601.o -shared -o $@
 Auxiliary.o: Auxiliary.cpp Auxiliary.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 BoardIO.o: BoardIO.cpp BoardIO.h Auxiliary.h GameLogic.h Game.h MyBoard.h Board.h GamePiece.h \
@@ -70,9 +70,9 @@ AlgorithmRegistration.o: AlgorithmRegistration.cpp AlgorithmRegistration.h Playe
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 
 
-RSPPlayer_208940601.so: RSPPlayer_208940601.cpp
-		$(COMP) $(CPP_COMP_FLAG) RSPPlayer_208940601.cpp -o RSPPlayer_208940601.so -ldl -shared
 
+RSPPlayer_208940601.o: RSPPlayer_208940601.cpp RSPPlayer_208940601.h PlayerAlgorithm.h Point.h PiecePosition.h Board.h FightInfo.h Move.h JokerChange.h PlannedMove.h GamePiece.h MyPoint.h MyBoard.h Auxiliary.h AlgorithmRegistration.h MyPiecePosition.h MyJokerChange.h MyMove.h
+		$(COMP) -fPIC $(CPP_COMP_FLAG) -c $*.cpp
 
 .PHONY: all
 all: $(EXEC) RSPPlayer_208940601.so
