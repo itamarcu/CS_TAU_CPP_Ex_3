@@ -14,7 +14,8 @@ OBJS = Auxiliary.o \
 	MyPiecePosition.o \
 	MyPoint.o \
 	PlannedMove.o \
-	TournamentManager.o
+	TournamentManager.o \
+	AlgorithmRegistration.o
 # RSPPlayer_208940601.o \
 
 EXEC = ex3
@@ -23,7 +24,7 @@ CPP_COMP_FLAG = -std=c++14 -Wall -Wextra \
 -shared -fPIC -rdynamic -pthread -lpthread -ldl -Wl,-rpath-link=.
 
 $(EXEC): $(OBJS)
-	$(COMP) $(OBJS) -o $@ -ldl
+	$(COMP) $(OBJS) -o $@ -ldl -rdynamic
 
 Auxiliary.o: Auxiliary.cpp Auxiliary.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
@@ -63,7 +64,9 @@ MyPoint.o: MyPoint.cpp MyPoint.h Point.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 PlannedMove.o: PlannedMove.cpp PlannedMove.h GamePiece.h Point.h MyPoint.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
-TournamentManager.o: TournamentManager.cpp TournamentManager.h PlayerAlgorithm.h
+TournamentManager.o: TournamentManager.cpp TournamentManager.h PlayerAlgorithm.h AlgorithmRegistration.h
+		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
+AlgorithmRegistration.o: AlgorithmRegistration.cpp AlgorithmRegistration.h PlayerAlgorithm.h TournamentManager.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 
 
@@ -79,5 +82,4 @@ rps_tournament: $(EXEC)
 rps_lib: RSPPlayer_208940601.so
 clean:
 	rm -f $(OBJS) RSPPlayer_208940601.o RSPPlayer_208940601.so $(EXEC)
-
 

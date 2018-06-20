@@ -1,5 +1,6 @@
 #include "TournamentManager.h"
 #include "AlgorithmRegistration.h"
+#include "Auxiliary.h"
 #include <dlfcn.h>
 #include <dirent.h>
 
@@ -42,7 +43,9 @@ void TournamentManager::run(const char *path, int num_threads) {
         exit(1);
     }
 
-    printf("Total algorithms loaded: %d\n", (int) IDs.size());
+    if (DEBUGGING_MODE) {
+        printf("Total number of algorithms loaded: %d\n", (int) IDs.size());
+    }
 
     /*
      * Setup - reset scores
