@@ -66,7 +66,9 @@ PlannedMove.o: PlannedMove.cpp PlannedMove.h GamePiece.h Point.h MyPoint.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 TournamentManager.o: TournamentManager.cpp TournamentManager.h PlayerAlgorithm.h AlgorithmRegistration.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
-AlgorithmRegistration.o: AlgorithmRegistration.cpp AlgorithmRegistration.h PlayerAlgorithm.h TournamentManager.h
+AlgorithmRegistration.o: AlgorithmRegistration.cpp \
+  AlgorithmRegistration.h PlayerAlgorithm.h Point.h PiecePosition.h \
+  Board.h FightInfo.h Move.h JokerChange.h TournamentManager.h
 		$(COMP) $(CPP_COMP_FLAG) -c $*.cpp
 
 

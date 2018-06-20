@@ -3,18 +3,16 @@
 
 #include <functional>
 #include <memory>
-#include <string>
-#include <iostream>
 
 #include "PlayerAlgorithm.h"
 
 class AlgorithmRegistration {
 public:
-    AlgorithmRegistration(std::string id, std::function<std::unique_ptr<PlayerAlgorithm>()> factory);
+    AlgorithmRegistration(std::string id, std::function<std::unique_ptr<PlayerAlgorithm>()>);
 };
 
 #define REGISTER_ALGORITHM(ID) \
 AlgorithmRegistration register_me_##ID \
-    (#ID, []{return std::make_unique<RSPPlayer_##ID>();} );
+	(#ID, []{return std::make_unique<RSPPlayer_##ID>();} );
 
 #endif

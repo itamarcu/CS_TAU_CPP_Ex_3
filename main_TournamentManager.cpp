@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
         num_threads = atoi(argv[4]);
 
 //    DEBUGGING_MODE = std::find(argv, argv + argc, "DEBUG") != argv + argc;
-    DEBUGGING_MODE = true;
+    DEBUGGING_MODE = false;
     if (DEBUGGING_MODE)
         cout << "DEBUGGING_MODE: ON" << endl;
 
