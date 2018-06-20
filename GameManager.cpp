@@ -15,6 +15,11 @@ LoadBoardResult NewGameManager::setup_positions(int player, std::vector<std::uni
         if (placement == nullptr) {
             return LoadBoardResult(line_num, BadFormat);
         }
+        if (placement->getPiece() < 0) {
+            std::cout << "ERROR: What is char " << (int) placement->getPiece() << " supposed to mean, player "
+                      << player << "?" << std::endl;
+            continue;
+        }
 
         std::shared_ptr<GamePiece> new_piece;
         if (placement->getPiece() == JOKER_CHAR) {

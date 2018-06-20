@@ -77,7 +77,7 @@ GamePiece::Type type_from_char(const char c) {
         case FLAG_CHAR:
             return GamePiece::Type::Flag;
         default:
-            std::cout << "ERROR 95087216986345: char is " << c << std::endl;
+            std::cout << "ERROR 95087216986345: char is " << c << " (" << ((int) c) << ")" << std::endl;
             return GamePiece::Type::None;
     }
 }

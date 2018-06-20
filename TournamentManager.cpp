@@ -14,6 +14,7 @@ bool ends_with(std::string const &value, std::string const &ending) {
 }
 
 void TournamentManager::battle_between(std::string p1_ID, std::string p2_ID) {
+    std::cout << p1_ID << " VS " << p2_ID << std::endl;
     auto factory1 = algorithm_factories_by_ID[p1_ID];
     auto factory2 = algorithm_factories_by_ID[p2_ID];
     if (factory1 == nullptr) {
@@ -102,16 +103,16 @@ void TournamentManager::run(const char *path, int num_threads) {
     }
 
     //TODO here: run all the battle threads
-    // Each algorithm will play with the 15 algorithms in front of it and behind it, rotating around the list in modulo
+    // Each algorithm will play with the 15 algorithms in front of it and behind it, rotating around the
+    // list in modulo, and skipping itself
     for (int id_index_1 = 0; id_index_1 < id_count; id_index_1++) {
         int id_index_2 = id_index_1;
         for (int game_count = 0; game_count < 15; game_count++) {
             id_index_2++;
             if (id_index_2 == id_index_1)
                 id_index_2++;
-            if (id_index_2 > id_count)
+            if (id_index_2 >= id_count)
                 id_index_2 %= id_count;
-            printf("%d  %d %d\n", game_count, id_index_1, id_index_2);
             auto id_1 = *std::next(IDs.begin(), id_index_1);
             auto id_2 = *std::next(IDs.begin(), id_index_2);
             battle_between(id_1, id_2);
