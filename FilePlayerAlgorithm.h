@@ -1,5 +1,5 @@
-#ifndef CS_TAU_CPP_EX_3_FILEPLAYERALGORITHM_H
-#define CS_TAU_CPP_EX_3_FILEPLAYERALGORITHM_H
+#ifndef CS_TAU_CPP_RPS_208940601_FILEPLAYERALGORITHM_H
+#define CS_TAU_CPP_RPS_208940601_FILEPLAYERALGORITHM_H
 
 
 #include <list>
@@ -17,15 +17,13 @@ private:
     std::list<std::shared_ptr<PlannedMove>> movesList;
 public:
     /**
-     * initialize file player algorithm using player, this performs load from matching default file
-     * as described in EX1
-     * @param player
+     * initialize file player algorithm using player,
      */
-    explicit FilePlayerAlgorithm(int player);
+    explicit FilePlayerAlgorithm();
 
     /**
-     * initialize player positions
-     * @param player player should be equal to ivar player
+     * initialize player positions. this performs load from matching default file
+     * @param player player number
      * @param vectorToFill vector to fill
      */
     void getInitialPositions(int player, std::vector<unique_ptr<PiecePosition>> &vectorToFill) override;
@@ -62,4 +60,4 @@ public:
 };
 
 
-#endif //CS_TAU_CPP_EX_3_FILEPLAYERALGORITHM_H
+#endif //CS_TAU_CPP_RPS_208940601_FILEPLAYERALGORITHM_H

@@ -1,5 +1,5 @@
-#ifndef CS_TAU_CPP_EX_3_MYMOVE_H
-#define CS_TAU_CPP_EX_3_MYMOVE_H
+#ifndef CS_TAU_CPP_RPS_208940601_MYMOVE_H
+#define CS_TAU_CPP_RPS_208940601_MYMOVE_H
 
 
 #include "Move.h"
@@ -20,4 +20,4 @@ private:
 };
 
 
-#endif //CS_TAU_CPP_EX_3_MYMOVE_H
+#endif //CS_TAU_CPP_RPS_208940601_MYMOVE_H

@@ -1,5 +1,5 @@
-#ifndef CS_TAU_CPP_RPS_BGAME_H
-#define CS_TAU_CPP_RPS_BGAME_H
+#ifndef CS_TAU_CPP_RPS_208940601_BGAME_H
+#define CS_TAU_CPP_RPS_208940601_BGAME_H
 
 
 #include "MyBoard.h"
@@ -74,4 +74,4 @@ public:
 };
 
 
-#endif //CS_TAU_CPP_RPS_BGAME_H
+#endif //CS_TAU_CPP_RPS_208940601_BGAME_H

@@ -104,6 +104,8 @@ bool NewGameManager::setup_both_boards() {
         return false;
     }
 
+    if (DEBUGGING_MODE)
+        std::cout << "--- Setup complete ---" << std::endl;
     return true;
 }
 
@@ -117,6 +119,8 @@ void NewGameManager::run_game() {
 
     // Check winner
     if (game.checkWin()) {
+        if (DEBUGGING_MODE)
+            std::cout << "--- Game ended immediately - flag captured during setup. ---" << std::endl;
         return;
     }
 

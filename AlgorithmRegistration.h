@@ -8,7 +8,7 @@
 
 class AlgorithmRegistration {
 public:
-    AlgorithmRegistration(std::string id, std::function<std::unique_ptr<PlayerAlgorithm>()>);
+    AlgorithmRegistration(std::string id, std::function<std::unique_ptr<PlayerAlgorithm>()> factory);
 };
 
 #define REGISTER_ALGORITHM(ID) \

@@ -1,5 +1,5 @@
-#ifndef CS_TAU_CPP_RPS_GAMELOGIC_H
-#define CS_TAU_CPP_RPS_GAMELOGIC_H
+#ifndef CS_TAU_CPP_RPS_208940601_GAMELOGIC_H
+#define CS_TAU_CPP_RPS_208940601_GAMELOGIC_H
 
 #include "Game.h"
 #include "PlannedMove.h"
@@ -30,4 +30,4 @@ MoveResult make_planned_move(Game &game, PlannedMove &plannedMove);
 FightResult actually_fight(Game &game, std::shared_ptr<GamePiece> attacker,
                           std::shared_ptr<GamePiece> defender, Point &&position);
 
-#endif //CS_TAU_CPP_RPS_GAMELOGIC_H
+#endif //CS_TAU_CPP_RPS_208940601_GAMELOGIC_H

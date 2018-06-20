@@ -3,9 +3,12 @@
 #include "MyPiecePosition.h"
 #include "MyJokerChange.h"
 #include "MyMove.h"
+#include "AlgorithmRegistration.h"
 
 #define SIZE_OF_BIASED_JOKER_ARRAY 6
 #define BIASED_JOKER_ARRAY {SCISSORS_CHAR, ROCK_CHAR, PAPER_CHAR, ROCK_CHAR, SCISSORS_CHAR, ROCK_CHAR}
+
+REGISTER_ALGORITHM(208940601)
 
 void RSPPlayer_208940601::notifyOnInitialBoard(const Board &b, const std::vector<std::unique_ptr<FightInfo>> &fights) {
     (void) fights; // avoid compiler warning about unused parameter v__v
@@ -201,8 +204,7 @@ char RSPPlayer_208940601::select_new_joker_repr(const MyPoint &jokerPoint) {
     return c;
 }
 
-RSPPlayer_208940601::RSPPlayer_208940601(int player) : player((unsigned int) player),
-                                                       enemyPieceWhichJustAttacked(NoPlayer) {}
+RSPPlayer_208940601::RSPPlayer_208940601() : enemyPieceWhichJustAttacked(NoPlayer) {}
 
 RSPPlayer_208940601::~RSPPlayer_208940601() = default;
 
@@ -244,7 +246,7 @@ RSPPlayer_208940601::get_by_filter(unsigned int filter_in, unsigned int filter_o
 }
 
 void RSPPlayer_208940601::getInitialPositions(int player, std::vector<unique_ptr<PiecePosition>> &vectorToFill) {
-    (void) player; // avoid compiler warning about unused parameter v__v
+    this->player = ((unsigned int) player);
     std::vector<MyPoint> availableSpots;
     for (int i = 0; i < N; ++i) {
         for (int j = 0; j < M; ++j) {

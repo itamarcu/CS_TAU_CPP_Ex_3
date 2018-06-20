@@ -1,5 +1,5 @@
-#ifndef CS_TAU_CPP_RPS_AUXILIARY_H
-#define CS_TAU_CPP_RPS_AUXILIARY_H
+#ifndef CS_TAU_CPP_RPS_208940601_AUXILIARY_H
+#define CS_TAU_CPP_RPS_208940601_AUXILIARY_H
 
 
 #include <vector>
@@ -75,4 +75,4 @@ void shuffle_vector(std::vector<T> &vecToShuffle) {
     std::shuffle(vecToShuffle.begin(), vecToShuffle.end(), global_rng);
 }
 
-#endif //CS_TAU_CPP_RPS_AUXILIARY_H
+#endif //CS_TAU_CPP_RPS_208940601_AUXILIARY_H

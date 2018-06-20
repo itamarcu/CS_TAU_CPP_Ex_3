@@ -1,5 +1,5 @@
-#ifndef CS_TAU_CPP_EX_3_AUTOPLAYERALOGRITHM_H
-#define CS_TAU_CPP_EX_3_AUTOPLAYERALOGRITHM_H
+#ifndef CS_TAU_CPP_RPS_208940601_AUTOPLAYERALOGRITHM_H
+#define CS_TAU_CPP_RPS_208940601_AUTOPLAYERALOGRITHM_H
 
 
 #include "PlayerAlgorithm.h"
@@ -91,7 +91,7 @@ private:
 
 public:
 
-    explicit RSPPlayer_208940601(int player);
+    explicit RSPPlayer_208940601();
 
     void getInitialPositions(int player, std::vector<unique_ptr<PiecePosition>> &vectorToFill) override;
 
@@ -131,4 +131,4 @@ public:
 };
 
 
-#endif //CS_TAU_CPP_EX_3_AUTOPLAYERALOGRITHM_H
+#endif //CS_TAU_CPP_RPS_208940601_AUTOPLAYERALOGRITHM_H

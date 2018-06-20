@@ -1,5 +1,5 @@
-#ifndef CS_TAU_CPP_RPS_BOARDIO_H
-#define CS_TAU_CPP_RPS_BOARDIO_H
+#ifndef CS_TAU_CPP_RPS_208940601_BOARDIO_H
+#define CS_TAU_CPP_RPS_208940601_BOARDIO_H
 
 
 #include "Auxiliary.h"
@@ -73,4 +73,4 @@ public:
 };
 
 
-#endif //CS_TAU_CPP_RPS_BOARDIO_H
+#endif //CS_TAU_CPP_RPS_208940601_BOARDIO_H

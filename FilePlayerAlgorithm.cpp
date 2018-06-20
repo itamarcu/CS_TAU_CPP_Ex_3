@@ -7,6 +7,12 @@
 
 void FilePlayerAlgorithm::getInitialPositions(int player, std::vector<unique_ptr<PiecePosition>> &vectorToFill) {
     this->player = player;
+    std::vector<PlannedMove> playersMoves;
+    BoardIO::load_moves(playersMoves, player);
+    for (auto &playersMove : playersMoves) {
+        std::shared_ptr<PlannedMove> ptr = std::make_shared<PlannedMove>(playersMove);
+        movesList.push_back(ptr);
+    }
     MyBoard board;
     auto result = BoardIO::load_board(board, player == FIRST_PLAYER_CONST);
     if (result.type == BoardLoadingSuccess) {
@@ -84,15 +90,7 @@ unique_ptr<JokerChange> FilePlayerAlgorithm::getJokerChange() {
 
 FilePlayerAlgorithm::~FilePlayerAlgorithm() = default;
 
-FilePlayerAlgorithm::FilePlayerAlgorithm(int player) : player(player) {
+FilePlayerAlgorithm::FilePlayerAlgorithm() {
     alreadyGotJokerPartOfMove = false;
     alreadyGotMovementPartOfMove = false;
-    std::vector<PlannedMove> playersMoves;
-    BoardIO::load_moves(playersMoves, player);
-    for (auto &playersMove : playersMoves) {
-        std::shared_ptr<PlannedMove> ptr = std::make_shared<PlannedMove>(playersMove);
-        movesList.push_back(ptr);
-    }
-
-
 }

@@ -1,5 +1,5 @@
-#ifndef CS_TAU_CPP_RPS_GAMEMANAGER_H
-#define CS_TAU_CPP_RPS_GAMEMANAGER_H
+#ifndef CS_TAU_CPP_RPS_208940601_GAMEMANAGER_H
+#define CS_TAU_CPP_RPS_208940601_GAMEMANAGER_H
 
 #include <vector>
 #include "GameManager.h"
@@ -41,4 +41,4 @@ public:
 };
 
 
-#endif //CS_TAU_CPP_RPS_GAMEMANAGER_H
+#endif //CS_TAU_CPP_RPS_208940601_GAMEMANAGER_H

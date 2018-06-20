@@ -185,6 +185,22 @@ void BoardIO::store_game(Game &game) {
     //    }
 
     fout.flush();
+
+    if (DEBUGGING_MODE) {
+        std::cout << "Winner: " << game.getGameWinner() << std::endl;
+        std::cout << "Reason: " << game.getGameEndReason() << std::endl;
+        std::cout << std::endl;
+        for (int y = 0; y < N; y++) {
+            for (int x = 0; x < M; x++) {
+                char ch = ' ';
+                if (game.board.grid[x][y] != nullptr) {
+                    ch = game.board.grid[x][y]->to_char();
+                }
+                std::cout << ch;
+            }
+            std::cout << std::endl;
+        }
+    }
 }
 
 void BoardIO::load_moves(std::vector<PlannedMove> &moves, int player) {

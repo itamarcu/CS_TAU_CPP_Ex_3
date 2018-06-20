@@ -1,5 +1,5 @@
-#ifndef CS_TAU_CPP_EX_3_GAMEPIECE_H
-#define CS_TAU_CPP_EX_3_GAMEPIECE_H
+#ifndef CS_TAU_CPP_RPS_208940601_GAMEPIECE_H
+#define CS_TAU_CPP_RPS_208940601_GAMEPIECE_H
 
 /**
  * game piece type - for jokers, this is what their non-joker type is
@@ -49,4 +49,4 @@ GamePiece::Type type_from_char(const char c);
 
 char nonjoker_lowercase_char_from_type(const GamePiece::Type gamePieceType);
 
-#endif //CS_TAU_CPP_EX_3_GAMEPIECE_H
+#endif //CS_TAU_CPP_RPS_208940601_GAMEPIECE_H
